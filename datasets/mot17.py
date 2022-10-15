@@ -49,6 +49,13 @@ class MOT17(Dataset):
             )
         )
 
+        images = list(
+            map(
+                lambda x : cv2.cvtColor(x, cv2.COLOR_BGR2RGB),
+                images
+            )
+        )
+
         height = images[0].shape[0]
         width = images[0].shape[1]
 
