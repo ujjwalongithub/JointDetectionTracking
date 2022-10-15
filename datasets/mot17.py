@@ -142,6 +142,8 @@ class MOT17(Dataset):
             ],
             axis=1
         )
+        gt[gt < 0] = 0.
+        gt[gt > 1] = 1.
         return gt
 
     @property
