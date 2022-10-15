@@ -12,17 +12,6 @@ import pandas as pd
 import torch
 from torch.utils.data import Dataset
 
-TRAIN_TRANSFORMS = A.Compose(
-    [
-        A.SmallestMaxSize(max_size=720, interpolation=cv2.INTER_CUBIC, p=1.0),
-        A.RandomCrop(height=512, width=512, p=1.0),
-        A.HorizontalFlip(p=0.5),
-        A.RandomBrightnessContrast(p=0.5),
-        A.ToGray(p=0.2)
-    ],
-    bbox_params=A.BboxParams(format='coco')
-)
-
 
 class MOT17(Dataset):
     """
