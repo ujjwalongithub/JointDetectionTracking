@@ -131,8 +131,9 @@ class MOT17(Dataset):
             ],
             axis=1
         )
-        gt[gt < 0] = 0.
-        gt[gt > 1] = 1.
+        box_clipped = gt[:, :4]
+        box_clipped = np.clip(box_clipped, a_min=0.0, a_max=1.0)
+        gt[:, :4] = box_clipped
         return gt
 
     @property
