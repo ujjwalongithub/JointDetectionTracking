@@ -374,7 +374,6 @@ class MOT17Transforms(object):
                 A.RandomCrop(height=512, width=512, p=1.0),
                 A.ToGray(p=0.2),
                 A.RandomBrightnessContrast(p=0.3),
-                A.RandomScale(p=0.3),
                 A.HorizontalFlip(p=0.5),
                 A.Normalize(p=1.0)
             ],
