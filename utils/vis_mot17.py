@@ -65,7 +65,7 @@ def plot_boxes(images, gt, paddings, file_name):
         # boxes = np.round(boxes)
         boxes = boxes.numpy()
         boxes = boxes.astype(int)
-        for i in range(boxes.shape[0]):
+        for _ in range(boxes.shape[0]):
             clr = list(color_dict[boxes[i, 4]][::-1])
             clr = [x * 255 for x in clr]
             clr = list(map(int, clr))
