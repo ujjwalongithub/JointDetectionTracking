@@ -5,7 +5,7 @@ JDT model and criterion classes.
 import torch
 import torch.nn.functional as F
 from torch import nn
-
+from backbones.vivit.vivit import ViViT
 from util import box_ops
 from util.misc import (NestedTensor, nested_tensor_from_tensor_list,
                        accuracy, get_world_size, interpolate,
@@ -317,7 +317,13 @@ def build(args):
         num_classes = 250
     device = torch.device(args.device)
 
-    backbone = build_backbone(args)
+    #backbone = build_backbone(args)
+    backbone = ViViT(
+        image_size=(512,512),
+        patch_size=(7,7),
+        num_frames=4,
+        num_classes=None
+    )
 
     transformer = build_transformer(args)
 

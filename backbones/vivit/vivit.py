@@ -51,10 +51,14 @@ class ViViT(nn.Module):
         self.dropout = nn.Dropout(emb_dropout)
         self.pool = pool
 
-        self.mlp_head = nn.Sequential(
-            nn.LayerNorm(dim),
-            nn.Linear(dim, num_classes)
-        )
+        if num_classes is None:
+            self.mlp_head = nn.Identity()
+        else:
+            self.mlp_head = nn.Sequential(
+                nn.LayerNorm(dim),
+                nn.Linear(dim, num_classes)
+            )
+
 
     def forward(self, x):
         x = self.to_patch_embedding(x)
